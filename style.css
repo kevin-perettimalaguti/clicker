@@ -13,6 +13,14 @@ header {
     padding: 1em;
 }
 
+#title-head {
+    font-size: 45px;
+}
+
+#lastscore {
+    font-size: 30px;
+    margin-top: 10px;
+}
 
 #main{
     display: flex;
@@ -23,7 +31,9 @@ header {
 
 #info{
     text-transform: uppercase;
-    font-size: 1vh;  
+    font-size: 1vh;
+    font-size: 13px;
+    margin-top: 10px;  
 }
 
 #info p{
@@ -40,38 +50,36 @@ header {
     align-items: center;
 }
 
-
-#reset-button{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 100%;
-    
+#score-head{
+    font-size: 38px;
 }
 
+#score-count {
+    font-size: 30px;
+}
+
+
 #reset{
-    display: flex;
-    justify-content: flex-end;
     background-color: #FFFF;
     border: none;   
+    width: 60px;
     height: 50px;
-    transition: transform 0.2s ease;
+    position: absolute;
+    top: 220px; 
+    right: 580px; 
 }
 
 
 #reset img{
     width: 40px;
-    height: 30px;
+    height: 32px;
 }
 
 #reset:active {
     color: white;
     transform: scale(0.8);
     transition: transform 0.2s ease-in-out;
-    
 }
-
-
 
 
 #click {
@@ -83,4 +91,10 @@ header {
     color: white;
     transform: scale(0.8);
     transition: transform 0.2s ease-in-out;
+}
+
+#textflammepersecond {
+    color: black;
+    font-size: 20px;
+    margin-top: 15px;
 }
