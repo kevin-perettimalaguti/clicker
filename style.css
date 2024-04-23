@@ -67,7 +67,7 @@ header {
 #reset:active {
     color: white;
     transform: scale(0.8);
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease;
 }
 
 
