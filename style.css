@@ -41,7 +41,7 @@ header {
 }
 
 
-#reset-button{
+#reset{
     background-color: #FFFF;
     border: none;   
     width: 60px;
@@ -49,12 +49,12 @@ header {
 }
 
 
-#reset-button img{
+#reset img{
     width: 40px;
     height: 30px;
 }
 
-#reset-button:active {
+#reset:active {
     color: white;
     transform: scale(0.8);
     transition: transform 0.2s ease-in-out;
