@@ -69,7 +69,6 @@ header {
     right: 580px; 
 }
 
-
 #reset img{
     width: 40px;
     height: 32px;
@@ -97,4 +96,54 @@ header {
     color: black;
     font-size: 20px;
     margin-top: 15px;
+}
+
+#updates {
+    position: fixed;
+    top: 170px;
+    right: 200px; 
+    display: grid;
+    grid-template-columns: repeat(3, 60px); 
+    gap: 10px;
+}
+
+#updates button {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#updates button img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#updates #axeupdate:hover::before {
+    content: "Wood is twice as effective"; /* Contenu du message */
+    position: absolute;
+    top: -8px; /* Position au-dessus du bouton */
+    left: 20px; /* Centré horizontalement */
+    transform: translateX(-50%); /* Centré horizontalement */
+    background-color: rgba(0, 0, 0, 0.8); /* Fond du message */
+    color: white; /* Couleur du texte */
+    padding: 5px; /* Espacement intérieur */
+    border-radius: 5px; /* Bord arrondi */
+}
+
+#updates #cisceaupdate:hover::before {
+    content: "Paper is twice as effective"; /* Contenu du message */
+    position: absolute;
+    top: -40px; /* Position au-dessus du bouton */
+    left: 90px; /* Centré horizontalement */
+    transform: translateX(-50%); /* Centré horizontalement */
+    background-color: rgba(0, 0, 0, 0.8); /* Fond du message */
+    color: white; /* Couleur du texte */
+    padding: 5px; /* Espacement intérieur */
+    border-radius: 5px; /* Bord arrondi */
+    margin-top: 20px;
 }
