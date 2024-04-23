@@ -44,7 +44,7 @@ header {
 #reset-button{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     width: 100%;
     
 }
@@ -54,8 +54,8 @@ header {
     justify-content: flex-end;
     background-color: #FFFF;
     border: none;   
-    width:100%;
     height: 50px;
+    transition: transform 0.2s ease;
 }
 
 
@@ -67,8 +67,11 @@ header {
 #reset:active {
     color: white;
     transform: scale(0.8);
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease-in-out;
+    
 }
+
+
 
 
 #click {
