@@ -27,6 +27,14 @@ function saveGameState() {
     localStorage.setItem('upgrade2Price', upgrade2Price);
 }
 
+function loadGameState() {
+    score = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
+    flamesPerSecond = localStorage.getItem('flamesPerSecond') ? parseInt(localStorage.getItem('flamesPerSecond')) : 0;
+    upgrade1Price = localStorage.getItem('upgrade1Price') ? parseInt(localStorage.getItem('upgrade1Price')) : 10;
+    upgrade2Price = localStorage.getItem('upgrade2Price') ? parseInt(localStorage.getItem('upgrade2Price')) : 100;
+}
+
+
 
 function updateScore() {
     scoreCount.textContent = score;
@@ -159,3 +167,15 @@ lastscoreElement.textContent = "LAST SCORE : " + score;
 updateUpgrade1Price();
 updateUpgrade2Price();
 updateFlamesPerSecondText();
+
+window.addEventListener('beforeunload', function() {
+    saveGameState();
+});
+
+window.addEventListener('load', function() {
+    loadGameState();
+    updateScore();
+    updateFlamesPerSecondText();
+    updateUpgrade1Price();
+    updateUpgrade2Price();
+}  );
