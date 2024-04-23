@@ -9,19 +9,22 @@ var clickUpgrade5 = document.getElementById('upgrade5');
 const lastscoreElement = document.getElementById('lastscore');
 const generateFlamme = document.getElementById('textflammepersecond');
 var score = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
-var flamesPerSecondText = localStorage.getItem('flamesPerSecond') ? parseInt(localStorage.getItem('flamesPerSecond')) : 0;
-var flamesPerSecond = 0;
-var upgrade1Price = 10;
-var upgrade2Price = 100;
+var flamesPerSecond = localStorage.getItem('flamesPerSecond') ? parseInt(localStorage.getItem('flamesPerSecond')) : 0;
+var upgrade1Price = localStorage.getItem('upgrade1Price') ? parseInt(localStorage.getItem('upgrade1Price')) : 10;
+var upgrade2Price = localStorage.getItem('upgrade2Price') ? parseInt(localStorage.getItem('upgrade2Price')) : 100;
 
 
 
 
 
-// Enregistrer le score et les flammes par seconde dans le localStorage à chaque changement
+
+
+
 function saveGameState() {
     localStorage.setItem('score', score);
     localStorage.setItem('flamesPerSecond', flamesPerSecond);
+    localStorage.setItem('upgrade1Price', upgrade1Price);
+    localStorage.setItem('upgrade2Price', upgrade2Price);
 }
 
 
@@ -33,7 +36,8 @@ function updateScore() {
 function addScore() {
     score++;
     updateScore();
-    localStorage.setItem('score', score); 
+    localStorage.setItem('score', score);
+    saveGameState();
 }
 
 
@@ -52,7 +56,6 @@ function updateUpgrade2Price() {
 }
 
 function upgrade1(){
-
     if (score >= upgrade1Price) {
         flamesPerSecond++;
         score -= upgrade1Price; 
@@ -61,6 +64,7 @@ function upgrade1(){
         updateFlamesPerSecondText(); 
         updateUpgrade1Price(); 
         localStorage.setItem('score', score);
+        saveGameState(); 
         return flamesPerSecond;
     } else {
         alert("You don't have enough score to buy this upgrade!");
@@ -70,12 +74,13 @@ function upgrade1(){
 function upgrade2(){
     if (score >= upgrade2Price) {
         flamesPerSecond+= 2;
-        score -= upgrade2Price; // Déduit le prix de l'upgrade du score
-        upgrade1Price *= 2 * 2; // Double le prix de l'upgrade pour l'achat suivant
+        score -= upgrade2Price; 
+        upgrade2Price *= 2 * 2; 
         updateScore();
         updateFlamesPerSecondText();
         updateUpgrade2Price(); 
         localStorage.setItem('score', score);
+        saveGameState(); 
         return flamesPerSecond;
     } else {
         alert("You don't have enough score to buy this upgrade!");
@@ -109,17 +114,17 @@ function upgrade5(){
 
 function resetScore() {
     var confirmation = confirm("Are you sure you want to reset?");
-
     if (confirmation) {
         score = 0;
         updateScore();
         flamesPerSecond = 0; 
         updateFlamesPerSecondText();
         upgrade1Price = 10;
-        updateUpgrade1Price(); // Mettre à jour le prix de la mise à niveau 1 dans l'interface utilisateur
+        updateUpgrade1Price();
         upgrade2Price = 100;
-        updateUpgrade2Price(); // Mettre à jour le prix de la mise à niveau 2 dans l'interface utilisateur
+        updateUpgrade2Price();
         localStorage.setItem('score', score);
+        saveGameState(); 
     } else {
         return;
     }
@@ -131,6 +136,7 @@ function resetScore() {
 function addFlamesPerSecond() {
     score += flamesPerSecond;
     updateScore();
+    saveGameState(); 
 }
 
 
@@ -148,6 +154,7 @@ updateScore();
 setInterval(addFlamesPerSecond, 1000);
 
 lastscoreElement.textContent = "LAST SCORE : " + score;
+
 
 updateUpgrade1Price();
 updateUpgrade2Price();
