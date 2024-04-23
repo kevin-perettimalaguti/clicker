@@ -128,10 +128,10 @@ function resetScore() {
 
 
 
-// function addFlamesPerSecond() {
-//     score += flamesPerSecond;
-//     updateScore();
-// }
+function addFlamesPerSecond() {
+    score += flamesPerSecond;
+    updateScore();
+}
 
 
 
