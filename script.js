@@ -1,9 +1,10 @@
 var scoreCount = document.getElementById('score-count');
 var clickButton = document.getElementById('click');
 var resetButton = document.getElementById('reset-button');
-var lastscoreElement = document.getElementById('lastscore');
+const lastscoreElement = document.getElementById('lastscore');
+const generateFlamme = document.getElementById('textflammepersecond');
 var score = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
-var flamesPerSecond = 1; // Nombre de flammes par seconde
+var flamesPerSecond = 1;
 
 // Mise à jour de l'affichage du score
 function updateScore() {
@@ -30,11 +31,6 @@ function addFlamesPerSecond() {
     updateScore();
 }
 
-// Affichage du dernier score
-function displayLastScore() {
-    lastscoreElement.textContent = "LAST SCORE : " + score;
-}
-
 clickButton.addEventListener('click', addScore);
 resetButton.addEventListener('click', resetScore);
 
@@ -43,4 +39,8 @@ updateScore();
 // Démarre les flammes par seconde
 setInterval(addFlamesPerSecond, 1000);
 
-displayLastScore();
+// Affichage du dernier score
+lastscoreElement.textContent = "LAST SCORE : " + score;
+
+// Afficher la génération des flammes par seconde
+generateFlamme.textContent = "You generate " + flamesPerSecond + " flames per second";
