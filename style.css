@@ -1,6 +1,12 @@
+@font-face {
+    font-family: "Minecraft";
+    src: url('assets/font/minecraft_font.ttf') format('truetype'); /* Spécifiez le chemin vers votre fichier de police */
+}
+
 * {
     margin: 0;
     padding: 0;
+    font-family: "Minecraft", sans-serif;
 }
 
 
