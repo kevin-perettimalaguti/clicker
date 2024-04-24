@@ -3,15 +3,16 @@ var clickButton = document.getElementById('click');
 var resetButton = document.getElementById('reset-button');
 var clickUpgrade = document.getElementById('upgrade1');
 var clickUpgrade2 = document.getElementById('upgrade2');
-var clickImprovementPaper = document.getElementById('cisceaupdate')
+var clickImprovementPaper = document.getElementById('cisceaupdate');
+var clickImprovementWood = document.getElementById('axeupdate');
 const lastscoreElement = document.getElementById('lastscore');
 const generateFlamme = document.getElementById('textflammepersecond');
 var score = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
 var flamesPerSecond = localStorage.getItem('flamesPerSecond') ? parseInt(localStorage.getItem('flamesPerSecond')) : 0;
 var upgrade1Price = localStorage.getItem('upgrade1Price') ? parseInt(localStorage.getItem('upgrade1Price')) : 10;
 var upgrade2Price = localStorage.getItem('upgrade2Price') ? parseInt(localStorage.getItem('upgrade2Price')) : 100;
-var improvementPaperPrice = localStorage.getItem('improvementPaperPrice') ? parseInt(localStorage.getItem('improvementPaperPrice')) : 1000;
-var improvementWoodPrice = localStorage.getItem('improvementWoodPrice') ? parseInt(localStorage.getItem('improvementWoodPrice')) : 3000;
+var improvementPaperPrice = localStorage.getItem('improvementPaperPrice') ? parseInt(localStorage.getItem('improvementPaperPrice')) : 10;
+var improvementWoodPrice = localStorage.getItem('improvementWoodPrice') ? parseInt(localStorage.getItem('improvementWoodPrice')) : 20;
 var stockElements = {
     "paper": 1,
     "wood": 2
@@ -22,22 +23,16 @@ function saveGameState() {
     localStorage.setItem('flamesPerSecond', flamesPerSecond);
     localStorage.setItem('upgrade1Price', upgrade1Price);
     localStorage.setItem('upgrade2Price', upgrade2Price);
+    localStorage.setItem('improvementPaperPrice', improvementPaperPrice);
+    localStorage.setItem('improvementWoodPrice', improvementWoodPrice);
 }
 
 function updateScore() {
     scoreCount.textContent = score;
 }
 
-function addScore() {
-    score++;
-    updateScore();
-    localStorage.setItem('score', score);
-    saveGameState();
-}
-
 function updateFlamesPerSecondText() {
     generateFlamme.textContent = "You generate " + flamesPerSecond + " flames per second";
-    localStorage.setItem('flamesPerSecond', flamesPerSecond);
 }
 
 function updateUpgrade1Price() {
@@ -51,13 +46,19 @@ function updateUpgrade2Price() {
 }
 
 function updatePriceImprovementPaper() {
-    var upgrade2PriceElement = document.getElementById('cisceaupdate');
-    upgrade2PriceElement.textContent = improvementPaperPrice + " kW/m²";
+    var improvementPaperPriceElement = document.getElementById('improvementPaper-Price');
+    improvementPaperPriceElement.textContent = improvementPaperPrice;
 }
 
-function updatepriceImprovementWood() {
-    var upgrade2PriceElement = document.getElementById('axeupdate');
-    upgrade2PriceElement.textContent = improvementWoodPrice + " kW/m²";
+function updatePriceImprovementWood() {
+    var improvementWoodPriceElement = document.getElementById('improvementWood-Price');
+    improvementWoodPriceElement.textContent = improvementWoodPrice;
+}
+
+function addScore() {
+    score++;
+    updateScore();
+    saveGameState();
 }
 
 function upgrade1() {
@@ -70,7 +71,6 @@ function upgrade1() {
         updateUpgrade1Price();
         localStorage.setItem('score', score);
         saveGameState();
-        return flamesPerSecond;
     } else {
         alert("You don't have enough score to buy this upgrade!");
     }
@@ -83,10 +83,8 @@ function upgrade2() {
         flamesPerSecond += stockElements["wood"];
         updateScore();
         updateFlamesPerSecondText();
-        updateUpgrade2Price();
-        localStorage.setItem('score', score);
+        updateUpgrade2Price(); // Ajout de cette ligne pour mettre à jour le prix affiché
         saveGameState();
-        return flamesPerSecond;
     } else {
         alert("You don't have enough score to buy this upgrade!");
     }
@@ -96,15 +94,13 @@ function improvementPaper() {
     if (score >= improvementPaperPrice) {
         score -= improvementPaperPrice;
         improvementPaperPrice *= 2 * 2;
-        stockElements["paper"]*= 2;
+        stockElements["paper"] *= 2;
         updateScore();
         updateFlamesPerSecondText();
-        updatePriceImprovementPaper();
-        localStorage.setItem('score', score);
+        updatePriceImprovementPaper(); 
         saveGameState();
-        return flamesPerSecond;
     } else {
-        alert("You don't have enough score to buy this upgrade!");
+        alert("You don't have enough score to buy this improvement!");
     }
 }
 
@@ -112,17 +108,17 @@ function improvementWood() {
     if (score >= improvementWoodPrice) {
         score -= improvementWoodPrice;
         improvementWoodPrice *= 2 * 2;
-        stockElements["wood"]*= 2;
+        stockElements["wood"] *= 2;
         updateScore();
         updateFlamesPerSecondText();
-        updatepriceImprovementWood();
-        localStorage.setItem('score', score);
+        updatePriceImprovementWood(); 
         saveGameState();
-        return flamesPerSecond;
     } else {
-        alert("You don't have enough score to buy this upgrade!");
+        alert("You don't have enough score to buy this improvement!");
     }
 }
+
+
 function resetScore() {
     var confirmation = confirm("Are you sure you want to reset?");
     if (confirmation) {
@@ -134,7 +130,6 @@ function resetScore() {
         updateUpgrade1Price();
         upgrade2Price = 100;
         updateUpgrade2Price();
-        localStorage.setItem('score', score);
         saveGameState();
     } else {
         return;
@@ -147,6 +142,7 @@ function addFlamesPerSecond() {
     saveGameState();
 }
 
+clickImprovementWood.addEventListener('click', improvementWood)
 clickImprovementPaper.addEventListener('click', improvementPaper)
 clickButton.addEventListener('click', addScore);
 resetButton.addEventListener('click', resetScore);
