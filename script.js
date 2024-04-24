@@ -69,7 +69,6 @@ function upgrade1() {
         updateScore();
         updateFlamesPerSecondText();
         updateUpgrade1Price();
-        localStorage.setItem('score', score);
         saveGameState();
     } else {
         alert("You don't have enough score to buy this upgrade!");
@@ -83,7 +82,8 @@ function upgrade2() {
         flamesPerSecond += stockElements["wood"];
         updateScore();
         updateFlamesPerSecondText();
-        updateUpgrade2Price(); // Ajout de cette ligne pour mettre à jour le prix affiché
+        updateUpgrade2Price();
+
         saveGameState();
     } else {
         alert("You don't have enough score to buy this upgrade!");
@@ -93,11 +93,12 @@ function upgrade2() {
 function improvementPaper() {
     if (score >= improvementPaperPrice) {
         score -= improvementPaperPrice;
-        improvementPaperPrice *= 2 * 2;
+        improvementPaperPrice *= 2 * 2; 
         stockElements["paper"] *= 2;
         updateScore();
         updateFlamesPerSecondText();
-        updatePriceImprovementPaper(); 
+        updatePriceImprovementPaper();
+ 
         saveGameState();
     } else {
         alert("You don't have enough score to buy this improvement!");
@@ -112,11 +113,13 @@ function improvementWood() {
         updateScore();
         updateFlamesPerSecondText();
         updatePriceImprovementWood(); 
+
         saveGameState();
     } else {
         alert("You don't have enough score to buy this improvement!");
     }
 }
+
 
 
 function resetScore() {
@@ -130,6 +133,12 @@ function resetScore() {
         updateUpgrade1Price();
         upgrade2Price = 100;
         updateUpgrade2Price();
+        improvementPaperPrice = 10
+        updatePriceImprovementPaper()
+        improvementWoodPrice = 20
+        updatePriceImprovementWood()
+        stockElements["paper"] = 1
+        stockElements["wood"] = 2
         saveGameState();
     } else {
         return;
@@ -142,12 +151,12 @@ function addFlamesPerSecond() {
     saveGameState();
 }
 
-clickImprovementWood.addEventListener('click', improvementWood)
-clickImprovementPaper.addEventListener('click', improvementPaper)
 clickButton.addEventListener('click', addScore);
 resetButton.addEventListener('click', resetScore);
 clickUpgrade.addEventListener('click', upgrade1);
 clickUpgrade2.addEventListener('click', upgrade2);
+clickImprovementPaper.addEventListener('click', improvementPaper)
+clickImprovementWood.addEventListener('click', improvementWood)
 
 updateScore();
 setInterval(addFlamesPerSecond, 1000);
