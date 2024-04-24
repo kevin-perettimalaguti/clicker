@@ -13,8 +13,7 @@ body {
     background-image: url('assets/images/bg-first.webp');
     background-size: cover; 
     background-position: center; 
-   
-
+}
 
 
 header {
@@ -210,3 +209,4 @@ header {
     border-radius: 5px; /* Bord arrondi */
     margin-top: 20px;
 }
+
