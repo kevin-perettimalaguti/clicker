@@ -210,3 +210,14 @@ header {
     margin-top: 20px;
 }
 
+#improvementPaper-Price {
+    position: absolute;
+    top: 80px;
+    left: 10px;
+}
+
+#improvementWood-Price {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+}
