@@ -200,17 +200,10 @@ clickButton.addEventListener('click', addScore);
 resetButton.addEventListener('click', resetScore);
 clickUpgrade.addEventListener('click', upgrade1);
 clickUpgrade2.addEventListener('click', upgrade2);
-clickUpgrade3.addEventListener('click', upgrade3);
-clickUpgrade4.addEventListener('click', upgrade4);
-clickUpgrade5.addEventListener('click', upgrade5);
 
 updateScore();
-
 setInterval(addFlamesPerSecond, 1000);
-
 lastscoreElement.textContent = "LAST SCORE : " + score;
-
-
 updateUpgrade1Price();
 updateUpgrade2Price();
 updateUpgrade3Price();
