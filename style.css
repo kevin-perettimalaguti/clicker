@@ -9,6 +9,12 @@
     font-family: "Minecraft", sans-serif;
 }
 
+body {
+    background-image: url('assets/images/bg-first.webp');
+    background-size: cover; 
+    background-position: center; 
+   
+
 
 
 header {
