@@ -9,6 +9,12 @@
     font-family: "Minecraft", sans-serif;
 }
 
+body {
+    background-image: url('assets/images/bg-first.webp');
+    background-size: cover; 
+    background-position: center; 
+}
+
 
 header {
     display: flex;
@@ -40,6 +46,7 @@ header {
     font-size: 1vh;
     font-size: 13px;
     margin-top: 10px;  
+    color: white;
 }
 
 #info p{
@@ -54,6 +61,7 @@ header {
     font-weight: bold;
     margin: 1em;
     align-items: center;
+    color: white;
 }
 
 #score-head{
@@ -66,13 +74,14 @@ header {
 
 
 #reset{
-    background-color: #FFFF;
+    background-color: transparent;
     border: none;   
     width: 60px;
     height: 50px;
     position: absolute;
     top: 220px; 
     right: 580px; 
+    color: white;
 }
 
 #reset img{
@@ -88,7 +97,7 @@ header {
 
 
 #click {
-    background-color: #FFFF;
+    background-color: transparent;
     border: none;
 }
 
@@ -99,7 +108,7 @@ header {
 }
 
 #textflammepersecond {
-    color: black;
+    color: white;
     font-size: 20px;
     margin-top: 15px;
 }
@@ -170,14 +179,21 @@ header {
     max-height: 100%;
 }
 
-#updates button img:hover {
-    color: white;
-    transform: scale(0.8);
-    transition: transform 0.2s ease-in-out;
+#updates img {
+    width: 43px;
+    height: auto;
 }
 
-#updates #axeupdate:hover::before {
-    content: "Wood is twice as effective"; /* Contenu du message */
+
+
+#updates button img:hover {
+    color: white;
+    transform: scale(1.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+#updates #cisceaupdate:hover::before {
+    content: "Paper is twice as effective"; /* Contenu du message */
     position: absolute;
     top: -8px; /* Position au-dessus du bouton */
     left: 20px; /* Centré horizontalement */
@@ -188,8 +204,8 @@ header {
     border-radius: 5px; /* Bord arrondi */
 }
 
-#updates #cisceaupdate:hover::before {
-    content: "Paper is twice as effective"; /* Contenu du message */
+#updates #axeupdate:hover::before {
+    content: "Wood is twice as effective"; /* Contenu du message */
     position: absolute;
     top: -40px; /* Position au-dessus du bouton */
     left: 90px; /* Centré horizontalement */
@@ -200,3 +216,133 @@ header {
     border-radius: 5px; /* Bord arrondi */
     margin-top: 20px;
 }
+
+#improvementPaper-Price {
+    position: absolute;
+    top: 80px;
+    overflow: hidden;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+}
+
+#improvementWood-Price {
+    position: absolute;
+    top: 80px;
+    left: 135px;
+    overflow: hidden;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+    
+    
+}
+
+#improvementSheep-Price  {
+    position: absolute;
+    top: 80px;
+    left: 70px;
+    overflow: hidden;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+    
+}
+
+#improvementSteak-Price {
+    position: absolute;
+    top: 170px;
+    overflow: hidden;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+    
+}
+
+#improvementFurnace-Price {
+    position: absolute;
+    top: 170px;
+    left: 70px;
+    overflow: hidden;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+}
+
+#improvementCave-Price {
+    position: absolute;
+    top: 170px;
+    left: 135px;
+    overflow: hidden;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+}
+
+#improvementNetherrack-Price {
+    position: absolute;
+    top: 260px;
+    overflow: hidden;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+}
+
+#improvementIron-Price {
+    position: absolute;
+    top: 260px;
+    left: 70px;
+    overflow: hidden;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+}
+
+
+#improvementPortal-Price {
+    position: absolute;
+    top: 260px;
+    left: 135px;
+    overflow: hidden;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+}
+
+
+.petit1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    animation: pop 0.5s ease-out;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
