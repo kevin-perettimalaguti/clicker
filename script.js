@@ -2,6 +2,7 @@ var scoreCount = document.getElementById('score-count');
 var clickButton = document.getElementById('click');
 var resetButton = document.getElementById('reset-button');
 var clickUpgrade = document.getElementById('upgrade1');
+var clickUpgradeW = document.getElementById('upgradeW');
 var clickUpgrade2 = document.getElementById('upgrade2');
 var clickUpgrade3 = document.getElementById('upgrade3');
 var clickUpgrade4 = document.getElementById('upgrade4');
@@ -13,15 +14,20 @@ var generateFlamme = document.getElementById('textflammepersecond');
 var score = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
 var flamesPerSecond = localStorage.getItem('flamesPerSecond') ? parseInt(localStorage.getItem('flamesPerSecond')) : 0;
 var upgrade1Price = localStorage.getItem('upgrade1Price') ? parseInt(localStorage.getItem('upgrade1Price')) : 10;
+var upgradeWPrice = localStorage.getItem('upgradeWPrice') ? parseInt(localStorage.getItem('upgradeWPrice')) : 30;
 var upgrade2Price = localStorage.getItem('upgrade2Price') ? parseInt(localStorage.getItem('upgrade2Price')) : 100;
-var upgrade3Price = localStorage.getItem('upgrade3Price') ? parseInt(localStorage.getItem('upgrade3Price')) : 1000;
-var upgrade4Price = localStorage.getItem('upgrade4Price') ? parseInt(localStorage.getItem('upgrade4Price')) : 10000;
-var upgrade5Price = localStorage.getItem('upgrade5Price') ? parseInt(localStorage.getItem('upgrade5Price')) : 100000;
-var improvementPaperPrice = localStorage.getItem('improvementPaperPrice') ? parseInt(localStorage.getItem('improvementPaperPrice')) : 10;
-var improvementWoodPrice = localStorage.getItem('improvementWoodPrice') ? parseInt(localStorage.getItem('improvementWoodPrice')) : 20;
+var upgrade3Price = localStorage.getItem('upgrade3Price') ? parseInt(localStorage.getItem('upgrade3Price')) : 500;
+var upgrade4Price = localStorage.getItem('upgrade4Price') ? parseInt(localStorage.getItem('upgrade4Price')) : 7500;
+var upgrade5Price = localStorage.getItem('upgrade5Price') ? parseInt(localStorage.getItem('upgrade5Price')) : 90000;
+var improvementPaperPrice = localStorage.getItem('improvementPaperPrice') ? parseInt(localStorage.getItem('improvementPaperPrice')) : 100;
+var improvementWoodPrice = localStorage.getItem('improvementWoodPrice') ? parseInt(localStorage.getItem('improvementWoodPrice')) : 2000;
 var stockElements = {
     "paper": 1,
-    "wood": 2
+    "wool": 2,
+    "wood": 5,
+    "coal": 25,
+    "lava": 250,
+    "obsidienne": 1000
 };
 
 
@@ -29,6 +35,7 @@ function saveGameState() {
     localStorage.setItem('score', score);
     localStorage.setItem('flamesPerSecond', flamesPerSecond);
     localStorage.setItem('upgrade1Price', upgrade1Price);
+    localStorage.setItem('upgradeWPrice', upgradeWPrice);
     localStorage.setItem('upgrade2Price', upgrade2Price);
     localStorage.setItem('upgrade3Price', upgrade3Price);
     localStorage.setItem('upgrade4Price', upgrade4Price);
@@ -41,15 +48,17 @@ function loadGameState() {
     score = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
     flamesPerSecond = localStorage.getItem('flamesPerSecond') ? parseInt(localStorage.getItem('flamesPerSecond')) : 0;
     upgrade1Price = localStorage.getItem('upgrade1Price') ? parseInt(localStorage.getItem('upgrade1Price')) : 10;
+    upgradeWPrice = localStorage.getItem('upgradeWPrice') ? parseInt(localStorage.getItem('upgradeWPrice')) : 30;
     upgrade2Price = localStorage.getItem('upgrade2Price') ? parseInt(localStorage.getItem('upgrade2Price')) : 100;
-    upgrade3Price = localStorage.getItem('upgrade3Price') ? parseInt(localStorage.getItem('upgrade3Price')) : 1000;
-    upgrade4Price = localStorage.getItem('upgrade4Price') ? parseInt(localStorage.getItem('upgrade4Price')) : 10000;
-    upgrade5Price = localStorage.getItem('upgrade5Price') ? parseInt(localStorage.getItem('upgrade5Price')) : 100000;
-    improvementPaperPrice = localStorage.getItem('improvementPaperPrice') ? parseInt(localStorage.getItem('improvementPaperPrice')) : 10;
-    improvementWoodPrice = localStorage.getItem('improvementWoodPrice') ? parseInt(localStorage.getItem('improvementWoodPrice')) : 20;
+    upgrade3Price = localStorage.getItem('upgrade3Price') ? parseInt(localStorage.getItem('upgrade3Price')) : 500;
+    upgrade4Price = localStorage.getItem('upgrade4Price') ? parseInt(localStorage.getItem('upgrade4Price')) : 7500;
+    upgrade5Price = localStorage.getItem('upgrade5Price') ? parseInt(localStorage.getItem('upgrade5Price')) : 90000;
+    improvementPaperPrice = localStorage.getItem('improvementPaperPrice') ? parseInt(localStorage.getItem('improvementPaperPrice')) : 100;
+    improvementWoodPrice = localStorage.getItem('improvementWoodPrice') ? parseInt(localStorage.getItem('improvementWoodPrice')) : 2000;
 
     updateScore();
     updateUpgrade1Price();
+    updateUpgradeWPrice();
     updateUpgrade2Price();
     updateUpgrade3Price();
     updateUpgrade4Price();
@@ -79,6 +88,12 @@ function updateUpgrade1Price() {
     var upgrade1PriceElement = document.getElementById('upgrade1-price');
     upgrade1PriceElement.textContent = upgrade1Price + " kW/m²";
 }
+
+function updateUpgradeWPrice() {
+    var upgradeWPriceElement = document.getElementById('upgradeW-price');
+    upgradeWPriceElement.textContent = upgradeWPrice + " kW/m²";
+}
+
 
 function updateUpgrade2Price() {
     var upgrade2PriceElement = document.getElementById('upgrade2-price');
@@ -114,7 +129,7 @@ function upgrade1() {
     if (score >= upgrade1Price) {
         flamesPerSecond += stockElements["paper"];
         score -= upgrade1Price;
-        upgrade1Price *= 2 * 2;
+        upgrade1Price *= 2 * 1.5;
         updateScore();
         updateFlamesPerSecondText();
         updateUpgrade1Price();
@@ -125,6 +140,23 @@ function upgrade1() {
         alert("You don't have enough score to buy this upgrade!");
     }
 }
+
+function upgradeW() {
+    if (score >= upgradeWPrice) {
+        flamesPerSecond += stockElements["wool"];
+        score -= upgradeWPrice;
+        upgradeWPrice *= 2 * 1.5;
+        updateScore();
+        updateFlamesPerSecondText();
+        updateUpgradeWPrice();
+        localStorage.setItem('score', score);
+        saveGameState();
+        return flamesPerSecond;
+    }else{
+        alert("You don't have enough score to buy this upgrade!");
+    }
+}
+
 
 function upgrade2() {
     if (score >= upgrade2Price) {
@@ -144,7 +176,7 @@ function upgrade2() {
 
 function upgrade3() {
     if (score >= upgrade3Price) {
-        flamesPerSecond += 10;
+        flamesPerSecond += stockElements["coal"];
         score -= upgrade3Price;
         upgrade3Price *= 2 * 2;
         updateScore();
@@ -160,7 +192,7 @@ function upgrade3() {
 
 function upgrade4() {
     if (score >= upgrade4Price) {
-        flamesPerSecond += 50;
+        flamesPerSecond += stockElements["lava"];
         score -= upgrade4Price;
         upgrade4Price *= 2 * 2;
         updateScore();
@@ -176,7 +208,7 @@ function upgrade4() {
 
 function upgrade5() {
     if (score >= upgrade5Price) {
-        flamesPerSecond += 100;
+        flamesPerSecond += stockElements["obsidienne"];
         score -= upgrade5Price;
         upgrade5Price *= 2 * 2;
         updateScore();
@@ -194,7 +226,7 @@ function upgrade5() {
 function improvementPaper() {
     if (score >= improvementPaperPrice) {
         score -= improvementPaperPrice;
-        improvementPaperPrice *= 2 * 2;
+        improvementPaperPrice *= 2 * 5;
         stockElements["paper"] *= 2;
         updateScore();
         updateFlamesPerSecondText();
@@ -210,7 +242,7 @@ function improvementPaper() {
 function improvementWood() {
     if (score >= improvementWoodPrice) {
         score -= improvementWoodPrice;
-        improvementWoodPrice *= 2 * 2;
+        improvementWoodPrice *= 2 * 5;
         stockElements["wood"] *= 2;
         updateScore();
         updateFlamesPerSecondText();
@@ -232,17 +264,19 @@ function resetScore() {
         updateFlamesPerSecondText();
         upgrade1Price = 10;
         updateUpgrade1Price();
+        upgradeWPrice = 30;
+        updateUpgradeWPrice();
         upgrade2Price = 100;
         updateUpgrade2Price();
-        upgrade3Price = 1000;
+        upgrade3Price = 500;
         updateUpgrade3Price();
-        upgrade4Price = 10000;
+        upgrade4Price = 7500;
         updateUpgrade4Price();
-        upgrade5Price = 100000;
+        upgrade5Price = 90000;
         updateUpgrade5Price();
-        improvementPaperPrice = 10
+        improvementPaperPrice = 100
         updatePriceImprovementPaper()
-        improvementWoodPrice = 20
+        improvementWoodPrice = 2000
         updatePriceImprovementWood()
         stockElements["paper"] = 1
         stockElements["wood"] = 2
@@ -263,6 +297,7 @@ function addFlamesPerSecond() {
 clickButton.addEventListener('click', addScore);
 resetButton.addEventListener('click', resetScore);
 clickUpgrade.addEventListener('click', upgrade1);
+clickUpgradeW.addEventListener('click', upgradeW);
 clickUpgrade2.addEventListener('click', upgrade2);
 clickUpgrade3.addEventListener('click', upgrade3);
 clickUpgrade4.addEventListener('click', upgrade4);
@@ -277,6 +312,7 @@ setInterval(addFlamesPerSecond, 1000);
 lastscoreElement.textContent = "LAST SCORE : " + score;
 
 updateUpgrade1Price();
+updateUpgradeWPrice();
 updateUpgrade2Price();
 updateUpgrade3Price();
 updateUpgrade4Price();
