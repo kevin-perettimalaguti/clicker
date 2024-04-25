@@ -1,6 +1,6 @@
 var scoreCount = document.getElementById('score-count');
 var clickButton = document.getElementById('click');
-var resetButton = document.getElementById('reset-button');
+var resetButton = document.getElementById('reset');
 
 
 var clickUpgrade = document.getElementById('upgrade1');
@@ -129,6 +129,16 @@ function addScore() {
     updateScore();
     localStorage.setItem('score', score);
     saveGameState();
+
+    var petit1 = document.createElement('div');
+    petit1.textContent = '+1';
+    petit1.classList.add('petit1');
+    document.body.appendChild(petit1);
+    
+    // Retirer le "petit 1" après l'animation
+    setTimeout(() => {
+        petit1.remove();
+    }, 500);
 }
 
 function updateFlamesPerSecondText() {
