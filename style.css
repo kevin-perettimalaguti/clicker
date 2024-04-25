@@ -213,9 +213,8 @@ header {
 #improvementPaper-Price {
     position: absolute;
     top: 80px;
-    ;
     overflow: scroll;
-    width: 20%;
+    width: 24%;
 }
 
 #improvementWood-Price {

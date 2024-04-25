@@ -69,7 +69,19 @@ function loadGameState() {
 }
 
 function updateScore() {
-    scoreCount.textContent = score;
+    scoreCount.textContent = formatPrice(score);
+}
+
+function formatPrice(price) {
+    if (price >= 1000000000) {
+        return (price / 1000000000).toFixed(2) + "B";
+    } else if (price >= 1000000) {
+        return (price / 1000000).toFixed(2) + "M";
+    } else if (price >= 1000) {
+        return (price / 1000).toFixed(2) + "k";
+    } else {
+        return price.toString();
+    }
 }
 
 function addScore() {
@@ -80,49 +92,49 @@ function addScore() {
 }
 
 function updateFlamesPerSecondText() {
-    generateFlamme.textContent = "You generate " + flamesPerSecond + " flames per second";
+    generateFlamme.textContent = "You generate " + formatPrice(flamesPerSecond) + " flames per second";
     localStorage.setItem('flamesPerSecond', flamesPerSecond)
 }
 
 function updateUpgrade1Price() {
     var upgrade1PriceElement = document.getElementById('upgrade1-price');
-    upgrade1PriceElement.textContent = upgrade1Price + " kW/m²";
+    upgrade1PriceElement.textContent = formatPrice(upgrade1Price) + " kW/m²";
 }
 
 function updateUpgradeWPrice() {
     var upgradeWPriceElement = document.getElementById('upgradeW-price');
-    upgradeWPriceElement.textContent = upgradeWPrice + " kW/m²";
+    upgradeWPriceElement.textContent = formatPrice(upgradeWPrice) + " kW/m²";
 }
 
 
 function updateUpgrade2Price() {
     var upgrade2PriceElement = document.getElementById('upgrade2-price');
-    upgrade2PriceElement.textContent = upgrade2Price + " kW/m²";
+    upgrade2PriceElement.textContent = formatPrice(upgrade2Price) + " kW/m²";
 }
 
 function updateUpgrade3Price() {
     var upgrade3PriceElement = document.getElementById('upgrade3-price');
-    upgrade3PriceElement.textContent = upgrade3Price + " kW/m²";
+    upgrade3PriceElement.textContent = formatPrice(upgrade3Price) + " kW/m²";
 }
 
 function updateUpgrade4Price() {
     var upgrade4PriceElement = document.getElementById('upgrade4-price');
-    upgrade4PriceElement.textContent = upgrade4Price + " kW/m²";
+    upgrade4PriceElement.textContent = formatPrice(upgrade4Price) + " kW/m²";
 }
 
 function updateUpgrade5Price() {
     var upgrade5PriceElement = document.getElementById('upgrade5-price');
-    upgrade5PriceElement.textContent = upgrade5Price + " kW/m²";
+    upgrade5PriceElement.textContent = formatPrice(upgrade5Price) + " kW/m²";
 }
 
 function updatePriceImprovementPaper() {
     var improvementPaperPriceElement = document.getElementById('improvementPaper-Price');
-    improvementPaperPriceElement.textContent = improvementPaperPrice;
+    improvementPaperPriceElement.textContent = formatPrice(improvementPaperPrice);
 }
 
 function updatePriceImprovementWood() {
     var improvementWoodPriceElement = document.getElementById('improvementWood-Price');
-    improvementWoodPriceElement.textContent = improvementWoodPrice;
+    improvementWoodPriceElement.textContent = formatPrice(improvementWoodPrice);
 }
 
 function upgrade1() {
@@ -226,7 +238,7 @@ function upgrade5() {
 function improvementPaper() {
     if (score >= improvementPaperPrice) {
         score -= improvementPaperPrice;
-        improvementPaperPrice *= 2 * 5;
+        improvementPaperPrice *= 2 * 4;
         stockElements["paper"] *= 2;
         updateScore();
         updateFlamesPerSecondText();
