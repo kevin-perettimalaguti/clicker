@@ -214,13 +214,13 @@ header {
     position: absolute;
     top: 80px;
     overflow: scroll;
-    width: 24%;
+    width: 30%;
 }
 
 #improvementWood-Price {
     position: absolute;
     top: 80px;
-    left: 75px;
+    left: 70px;
     overflow: scroll;
-    width: 20%;
+    width: 30%;
 }
