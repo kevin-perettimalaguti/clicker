@@ -220,7 +220,7 @@ header {
 #improvementPaper-Price {
     position: absolute;
     top: 80px;
-    overflow: scroll;
+    overflow: hidden;
     width: 30%;
     font-size: 10px;
     color: #FFFF;
@@ -230,7 +230,7 @@ header {
     position: absolute;
     top: 80px;
     left: 135px;
-    overflow: scroll;
+    overflow: hidden;
     width: 30%;
     font-size: 10px;
     color: #FFFF;
@@ -242,7 +242,7 @@ header {
     position: absolute;
     top: 80px;
     left: 70px;
-    overflow: scroll;
+    overflow: hidden;
     width: 30%;
     font-size: 10px;
     color: #FFFF;
@@ -252,7 +252,7 @@ header {
 #improvementSteak-Price {
     position: absolute;
     top: 170px;
-    overflow: scroll;
+    overflow: hidden;
     width: 30%;
     font-size: 10px;
     color: #FFFF;
@@ -263,7 +263,7 @@ header {
     position: absolute;
     top: 170px;
     left: 70px;
-    overflow: scroll;
+    overflow: hidden;
     width: 30%;
     font-size: 10px;
     color: #FFFF;
@@ -273,7 +273,7 @@ header {
     position: absolute;
     top: 170px;
     left: 135px;
-    overflow: scroll;
+    overflow: hidden;
     width: 30%;
     font-size: 10px;
     color: #FFFF;
@@ -282,7 +282,7 @@ header {
 #improvementNetherrack-Price {
     position: absolute;
     top: 260px;
-    overflow: scroll;
+    overflow: hidden;
     width: 30%;
     font-size: 10px;
     color: #FFFF;
@@ -292,7 +292,7 @@ header {
     position: absolute;
     top: 260px;
     left: 70px;
-    overflow: scroll;
+    overflow: hidden;
     width: 30%;
     font-size: 10px;
     color: #FFFF;
@@ -303,7 +303,7 @@ header {
     position: absolute;
     top: 260px;
     left: 135px;
-    overflow: scroll;
+    overflow: hidden;
     width: 30%;
     font-size: 10px;
     color: #FFFF;
