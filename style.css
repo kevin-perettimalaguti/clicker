@@ -151,16 +151,20 @@ header {
     padding-left: 15px;
 }
 
-
-
 #updates {
     position: fixed;
-    top: 170px;
-    right: 200px; 
+    top: 150px;
+    right: 160px; 
     display: grid;
     grid-template-columns: repeat(3, 60px); 
     gap: 10px;
     position: absolute;
+    flex-wrap: wrap;
+}
+
+#updates img {
+    width: 43px;
+    height: auto;
 }
 
 #updates button {
@@ -179,24 +183,17 @@ header {
     max-height: 100%;
 }
 
-#updates img {
-    width: 43px;
-    height: auto;
-}
-
-
-
 #updates button img:hover {
     color: white;
     transform: scale(1.3);
     transition: transform 0.3s ease-in-out;
 }
 
-#updates #cisceaupdate:hover::before {
-    content: "Paper is twice as effective"; /* Contenu du message */
+#updates button:hover::before {
+    content: attr(data-info); /* Récupère le contenu de l'attribut data-info */
     position: absolute;
     top: -8px; /* Position au-dessus du bouton */
-    left: 20px; /* Centré horizontalement */
+    left: 50%; /* Centré horizontalement */
     transform: translateX(-50%); /* Centré horizontalement */
     background-color: rgba(0, 0, 0, 0.8); /* Fond du message */
     color: white; /* Couleur du texte */
@@ -204,17 +201,48 @@ header {
     border-radius: 5px; /* Bord arrondi */
 }
 
+/* Décalage de position pour chaque bouton */
+#updates #cisceaupdate:hover::before {
+    top: -8px;
+    left: 20px;
+}
+
+#updates #sheepupdate:hover::before {
+    top: -20px;
+}
+
 #updates #axeupdate:hover::before {
-    content: "Wood is twice as effective"; /* Contenu du message */
-    position: absolute;
-    top: -40px; /* Position au-dessus du bouton */
-    left: 90px; /* Centré horizontalement */
-    transform: translateX(-50%); /* Centré horizontalement */
-    background-color: rgba(0, 0, 0, 0.8); /* Fond du message */
-    color: white; /* Couleur du texte */
-    padding: 5px; /* Espacement intérieur */
-    border-radius: 5px; /* Bord arrondi */
-    margin-top: 20px;
+    top: -35px;
+    left: 165px;
+
+}
+
+#updates #steakupdate:hover::before {
+    top: 85px;
+    left: 20px;
+}
+
+#updates #furnaceupdate:hover::before {
+    top: 55px;
+}
+
+#updates #caveupdate:hover::before {
+    top: 55px;
+    left: 165px;
+}
+
+#updates #netherupdate:hover::before {
+    top: 160px;
+    left: 20px;
+}
+
+#updates #ironupdate:hover::before {
+    top: 160px;
+}
+
+#updates #portalupdate:hover::before {
+    top: 145px;
+    left: 165px;
 }
 
 #improvementPaper-Price {
