@@ -222,12 +222,96 @@ header {
     top: 80px;
     overflow: scroll;
     width: 30%;
+    font-size: 10px;
+    color: #FFFF;
 }
 
 #improvementWood-Price {
     position: absolute;
     top: 80px;
+    left: 135px;
+    overflow: scroll;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+    
+    
+}
+
+#improvementSheep-Price  {
+    position: absolute;
+    top: 80px;
     left: 70px;
     overflow: scroll;
     width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+    
 }
+
+#improvementSteak-Price {
+    position: absolute;
+    top: 170px;
+    overflow: scroll;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+    
+}
+
+#improvementFurnace-Price {
+    position: absolute;
+    top: 170px;
+    left: 70px;
+    overflow: scroll;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+}
+
+#improvementCave-Price {
+    position: absolute;
+    top: 170px;
+    left: 135px;
+    overflow: scroll;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+}
+
+#improvementNetherrack-Price {
+    position: absolute;
+    top: 260px;
+    overflow: scroll;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+}
+
+#improvementIron-Price {
+    position: absolute;
+    top: 260px;
+    left: 70px;
+    overflow: scroll;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+}
+
+
+#improvementPortal-Price {
+    position: absolute;
+    top: 260px;
+    left: 135px;
+    overflow: scroll;
+    width: 30%;
+    font-size: 10px;
+    color: #FFFF;
+}
+
+
+
+
+
+
+
