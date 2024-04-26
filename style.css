@@ -132,6 +132,9 @@ header {
     width: 100%;
     height: 80px;
     margin-top: 10px;
+    background-image: url('assets/images/button.png');
+    background-size: 103% 80px;
+    background-position: -20px;
     justify-content: center;
     background-color: #7b7b7b;
     display: flex;
