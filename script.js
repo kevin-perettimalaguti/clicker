@@ -112,6 +112,12 @@ function updateScore() {
     scoreCount.textContent = formatPrice(score);
 }
 
+function playButtonSound() {
+    var audio = new Audio('assets/sound/button-sound.mp3');
+    console.log(audio);
+    audio.play();
+}
+
 function formatPrice(price) {
     if (price >= 1000000000) {
         return (price / 1000000000).toFixed(2) + "B";
@@ -135,7 +141,7 @@ function addScore() {
     petit1.classList.add('petit1');
     document.body.appendChild(petit1);
     
-    // Retirer le "petit 1" après l'animation
+   
     setTimeout(() => {
         petit1.remove();
     }, 500);
